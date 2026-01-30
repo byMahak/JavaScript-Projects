@@ -1,0 +1,127 @@
+<!-- !Search filter -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Filter</title>
+    <style>
+        body {
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main-flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem; /* gap-10 */
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 12px;
+            border-radius: 5px;
+            outline: none;
+            background-color: #ffffff22;
+            color: #cecece;
+            /* margin-bottom: 10px; */
+            width: 300px;
+            border: none;
+            font-size: 14px;
+        }
+
+        .search-input::placeholder {
+            color: #cecece;; /* Match the text color */
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 20px; 
+        }
+
+        .card {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blurred-layer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            /* background-image: url("https://plus.unsplash.com/premium_photo-1679692887717-dc7f5d090271?q=80&w=774&auto=format"); */
+            background-size: cover;
+            background-position: bottom;
+            filter: blur(10px);
+            z-index: 1;
+            mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            mask-size: 100% 100%;
+            mask-repeat: no-repeat;
+            -webkit-mask-image: linear-gradient(to top,
+                    rgba(0, 0, 0, 1),
+                    rgba(0, 0, 0, 0));
+            -webkit-mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            z-index: 2;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .content p {
+            font-size: 14px;
+            color: #ddd;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-flex-container">
+        <input class="search-input" type="text" placeholder="Search...">
+
+        <div class="cards flex-container">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1679692887717-dc7f5d090271?q=80&w=774&auto=format"
+                    class="bg-img" />
+
+                <div class="blurred-layer"></div>
+
+                <div class="content">
+                    <h3>User 123</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quis.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Filter.js"></script>
+</body>
+
+</html>

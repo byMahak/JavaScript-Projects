@@ -1,0 +1,434 @@
+<!-- !Info Card App-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Call</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            display: none;
+            z-index: 999;
+
+            position: absolute;
+            background: #f0f0f0;
+            border-radius: 12px;
+            padding: 30px;
+            width: 440px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.635);
+        }
+
+        h2 {
+            margin-top: 12px;
+            margin-bottom: 15px;
+            text-align: left;
+            color: #222;
+        }
+
+        input[type="text"] {
+            height: 15px;
+            width: 93%;
+            padding: 10px;
+            /* margin: 10px 0; */
+            border: 2px solid #cccccc;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* .destinations {
+            margin-top: 15px;
+        } */
+
+        /* .form input[type="radio"] {
+            display: none; 
+        } */
+
+        /* .destinations label {
+            display: inline-block;
+            margin: 8px;
+            padding: 6px 12px;
+            border: 2px solid #e70505;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        } */
+
+        .destinations input[type="radio"]:checked+label {
+            background-color: #222;
+            color: #fff;
+            border-color: #222;
+        }
+
+        input[type="radio"] {
+            transform: scale(1.5);
+            padding-left: 5px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .buttons submit,
+        button {
+            border: None;
+            border-radius: 7px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            border-radius: 20px;
+        }
+
+
+        .submit-btn {
+            background-color: #ff6918;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .closeForm {
+            background-color: #8400ff;
+            color: white;
+            padding: 10px;
+        }
+
+        .form label {
+            padding-top: 10px;
+            font-size: 14px;
+            padding-left: 3px;
+            padding-right: 5px;
+            margin-bottom: 8px;
+            margin-right: 5px;
+        }
+
+        .time {
+            display: flex;
+        }
+
+        .time-selector {
+            padding-left: 7px;
+            padding-bottom: 2px;
+            margin-right: 10px;
+
+            display: flex;
+            border: 2px solid #017d15;
+            background-color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .time-selector label {
+            padding-right: 8px;
+        }
+
+        body {
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .note-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Color dots above card */
+        .color-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .gray {
+            background: #09c952;
+        }
+
+        .yellow {
+            background: #e5da00;
+        }
+
+        .red {
+            background: #e72828;
+        }
+
+        /* Wrap card and arrows */
+        .card-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .stack {
+            position: relative;
+            width: 380px;
+            padding-top: 200px;
+        }
+
+        .stack .card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top center;
+            transition: all 0.3s ease;
+        }
+
+        /* Card styling */
+        .card {
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: inherit;
+            background: #eaeff5;
+            border-radius: 15px;
+            padding: 20px 25px;
+            width: 340px;
+        }
+
+        .card:nth-child(1) {
+            z-index: 3;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:nth-child(2) {
+            z-index: 2;
+            transform: translateY(15px) scale(0.98);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            opacity: 0.9;
+        }
+
+        .card:nth-child(3) {
+            z-index: 1;
+            transform: translateY(30px) scale(0.96);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            /* opacity: 0.7; */
+        }
+
+        /* Card content */
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .info h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 15px;
+            color: #434343;
+        }
+
+        .details p {
+            margin: 2px 0;
+        }
+
+        .actions {
+            display: flex;
+            gap: 30px;
+            margin-top: 12px;
+        }
+
+        .contact-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 15px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .msg-btn {
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 15px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        /* Arrow buttons outside on right side */
+        .side-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: absolute;
+            right: -70px;
+            /* Moves it outside */
+        }
+
+        .circle-btn {
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 25px;
+            color: #003372;
+        }
+
+        .mychange {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+
+</head>
+
+<div class="form-container">
+    <h2>Note Creator</h2>
+
+    <form class="form">
+
+        <label>Image URL</label>
+        <input required type="text" placeholder="https://example.com/photo.jpg">
+
+        <label>Full Name</label>
+        <input required type="text" placeholder="Enter Full Name">
+
+        <label>Home Town</label>
+        <input required type="text" placeholder="Enter Home Town">
+
+        <label>Note To Create</label>
+        <input required type="text" placeholder="Enter The Note">
+
+        <p><strong>Your Time</strong></p>
+        <div class="time">
+
+            <div class="time-selector">
+                <input required type="radio" name="category" value="morning">
+                <label for="morning">Morning</label>
+            </div>
+
+            <div class="time-selector">
+                <input required type="radio" name="category" value="afternoon">
+                <label for="afternoon"> Afternoon</label>
+            </div>
+
+            <div class="time-selector">
+                <input required type="radio" name="category" value="evening">
+                <label for="evening">Evening</label>
+            </div>
+
+            <div class="time-selector">
+                <input required type="radio" name="category" value="night">
+                <label for="night">Night</label>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="submit-btn">Create Note</button>
+            <button type="button" class="closeForm">Close</button>
+        </div>
+    </form>
+
+</div>
+
+
+<div class="note-container">
+
+    <!-- Color Dots Above -->
+
+    <!-- Card + Right Side Arrows -->
+    <div class="card-wrapper">
+        <div class="stack">
+            <div class="card">
+
+                <div class="info">
+
+                    <div class="mychange">
+                        <img src="" class="avatar" alt="User avatar">
+                        <div class="color-dots">
+                            <span class="dot gray"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot red"></span>
+                        </div>
+                    </div>
+
+                    <h3>Fatima Uma</h3>
+                    <div class="details">
+                        <div>
+                            <p>City</p>
+                            <p>Note</p>
+                        </div>
+                        <div class="right">
+                            <p>Berlin,Germany</p>
+                            <p>It is the note I want to create.</p>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="contact-btn">📞 Contact</button>
+                        <button class="msg-btn">💬 Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrow Buttons Outside (Right Side) -->
+        <div class="side-buttons">
+            <button id="up-btn" class="circle-btn">⬆</button>
+            <button id="down-btn" class="circle-btn">⬇</button>
+            <button id="addNote" class="circle-btn" style="font-weight: bold;">+</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="Info.js"></script>
+
+</body>
+
+</html>
