@@ -1,8 +1,9 @@
 // ! Info Card Note
-// new cards create karne hai, data localstorage me save karna hai
-// localstorage se hi cards ko show karna hai
-// buttons handle karna hai
-// filters ko handle karna hai
+// Create new cards and persist their data in Local Storage
+// Render cards using data retrieved from Local Storage
+// Handle all button interactions and events
+// Implement and manage filter functionality
+
 
 let addNote = document.querySelector("#addNote");
 let formContainer = document.querySelector(".form-container");
@@ -21,8 +22,8 @@ let categoryRadios = form.querySelectorAll("input[name='category']");
 
 let submitButton = form.querySelector("submit");
 
-// !Code starts here
 
+// !Code starts here
 
 addNote.addEventListener("click", function(){
     formContainer.style.display = "initial";
@@ -83,12 +84,14 @@ formContainer.addEventListener("submit", function (evt){
     showCards();
 });
 
-// Form ka saara data array me put hoga aur localStorage me bhi save hoga but kyuki localStorage me pehle se data ho sakta hai to array ki jagah ham object lete hai
+
+// Collect all form data into an object and save it to Local Storage
+// An object is used instead of an array since Local Storage may already contain data
 
 const tasks=[];
 
 function saveToLocalStorage(obj){
-    // purane localStorage data nikalo
+    // Get old data from Local Storage
     
     if(localStorage.getItem("tasks")==null){
         let oldTasks = [];
@@ -104,9 +107,9 @@ function saveToLocalStorage(obj){
 }
 
 const stack = document.querySelector(".stack");
-//Function jo localStorage data ko cards me convert karega
+// Function to convert Local Storage data into cards
 function showCards(){
-        // Cards show karne ke pehle hamko pichhle cards hatane hai
+        // Clear existing cards before displaying new ones
     stack.innerHTML=""; 
 
     let allTasks=JSON.parse(localStorage.getItem("tasks"));

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Scheme Switcher</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    transition:background 0.5s ease;
+}
+
+.container{
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:40px 50px;
+    text-align:center;
+}
+
+h1{
+    color:#fff;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+p{
+    color:#cbd5f5;
+    margin-bottom:30px;
+}
+
+.palette{
+    padding-top: 10px;
+    display:flex;
+    gap:30px;
+    justify-content:center;
+}
+
+.buttons{
+    border: solid 2px #ff1818;
+    width:80px;
+    height:80px;
+    border-radius:12px;
+    cursor:pointer;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding-bottom:12px;
+    color:#fff;
+    font-size:12px;
+    letter-spacing:1px;
+    transition:transform 0.5s, box-shadow 0.5s;
+}
+
+.buttons:hover{
+    transform:translateY(-8px) scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+#gray{ background:#6b7280;color: #f9fafb;}
+#white{ background:#f9fafb; color:#111; }
+#blue{ background:#2563eb;color: #f9fafb;}
+#yellow{ background:#facc15; color:#111; }
+#default{background:#0f172a;color:#f9fafb}
+.footer{
+    margin-top:25px;
+    color:#94a3b8;
+    font-size:13px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="h1">Color Scheme Switcher</h1>
+    <p id="p">Try clicking on one of the colors below to change the color of the page</p>
+
+    <div class="palette">
+        <div class="buttons" id="white">WHITE</div>
+        <div class="buttons" id="gray" >GRAY</div>
+        <div class="buttons" id="yellow" >YELLOW</div>
+        <div class="buttons" id="blue" >BLUE</div>
+        <div class="buttons" id="default">DEFAULT</div>
+    </div>
+
+</div>
+
+<script src="./script.js"></script>
+
+</body>
+</html>

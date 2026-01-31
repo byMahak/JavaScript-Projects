@@ -31,48 +31,8 @@ let users = [
 ];
 
 // Show all users 
-// Filter everytime their is input
+// Filter everytime in input
 // Show filered users
-
-// ?function showUsers(array) {
-//     array.forEach(function (user) {
-//         // Outer card div
-//         let card = document.createElement("div");
-//         card.classList.add("card");
-
-//         // Image creation
-//         let img = document.createElement("img");
-//         img.src = user.pic;
-//         img.classList.add("bg-img");
-
-//         // blurred-layer div
-//         let blurred = document.createElement("div");
-//         blurred.style.backgroundImage = `url(${user.pic})`;
-//         blurred.classList.add("blurred-layer");
-
-//         // Content div
-//         let content = document.createElement("div");
-//         content.classList.add("content");
-
-//         let h3 = document.createElement("h3");
-//         h3.textContent = user.name;
-
-//         let p = document.createElement("p");
-//         p.textContent = user.bio;
-
-//         // Append heading(h3) and paragraph(p) to content
-//         content.appendChild(h3);
-//         content.appendChild(p);
-
-//         // Appending everything on card
-//         card.appendChild(img);
-//         card.appendChild(blurred);
-//         card.appendChild(content);
-
-//         // Finally append card to the body or any container
-//         document.querySelector(".cards").appendChild(card);
-//     });
-// }
 
 function showUsers(array) {
     const container = document.querySelector(".cards");

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body {
+            background-color: #cecece7d;
+            font-family: Verdana, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            background-color:rgb(168, 192, 236);
+            padding: 5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.336), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            width: 100%;
+            max-width: fit-content;
+            min-height: 100px;
+            text-align: center;
+        }
+        .form{
+            display: flex;
+        }
+        #guess{
+            font-size: large;
+            color: rgb(255, 0, 0);
+            font-weight: bold;
+            padding: 5px;
+        }
+        #guessField{
+            padding: 5px;
+            margin-inline: 30px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        #submit{
+            padding: 5px;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(255, 50, 50);
+            border-radius: 5px;
+            border: 2px solid rgb(203, 14, 14);
+        }
+        .lowORhigh{
+            margin-top: 30px;
+            font-size: large;
+            font-weight: bold;
+            color:rgba(33, 33, 33, 0.8);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+
+        <h1>Number Guessing Game</h1>
+        <p>Try guessing a number between  1 to 100. <br> <br>You have 10 attempts to guess the right number. <br> <br> You can start new game as well.</p>
+        <br>
+        <br>
+
+        <form class="form">
+            <label for="guessField" id="guess"> Guess a Number </label>
+            <input type="text" inputmode="numeric" id="guessField" class="guessfield"/>
+
+            <input type="submit" id="submit" value="Submit Guess" class="guessSubmit">
+        </form>   
+
+        <br>
+
+        <div class="resultParas">
+            <p>Previous Guesses : <span class="prevGuess"></span></p>
+            <p>Guesses Remaining : <span class="remaining">10</span></p>
+            <p class="lowORhigh"></p>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
