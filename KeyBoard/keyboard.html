@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Key Checker</title>
+    <style>
+        body {
+            font-size: large;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 id="insert">
+        Press any Key and get its code.
+    </h2>
+</body>
+
+<script>
+    let insert = document.querySelector('#insert');
+    window.addEventListener('keydown',function(evt){
+        console.log(evt);
+        insert.innerHTML = `
+        <style>
+            table {
+            border-collapse: collapse;
+            border: 2px solid black;
+            }
+            th, td {
+            border: 2px solid black;
+            padding: 12px;
+            text-align:center;
+            }
+        </style>
+        
+        <div class="table">
+        <table>
+            <tr>
+                <th>Key pressed</th>
+                <th>Key Code</th>
+                <th>Code value</th>
+            </tr>
+            <tr>
+                <td>${evt.key===' ' ? 'Space' : evt.key }</td>
+                <td>${evt.keyCode}</td>
+                <td>${evt.code}</td>
+            </tr>
+        </table>
+        </div>
+        `;
+    })
+</script>
+
+</html>
